@@ -1,4 +1,4 @@
 [gerrit]
 host=review.openstack.org
-port=29418
+port={{ cookiecutter.gerrit_id }}
 project={{cookiecutter.repo_group}}/{{cookiecutter.repo_name}}.git

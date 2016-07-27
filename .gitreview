@@ -1,4 +1,4 @@
 [gerrit]
 host=review.openstack.org
-port=29418
-project=openstack-dev/cookiecutter.git
+port=xxx
+project=openstack-dev/ui-cookiecutter.git

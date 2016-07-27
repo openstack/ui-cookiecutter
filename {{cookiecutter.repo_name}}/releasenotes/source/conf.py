@@ -55,7 +55,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'{{cookiecutter.module_name}} Release Notes'
+project = u'{{cookiecutter.call_by_name }} Release Notes'
 copyright = u'2016, OpenStack Foundation'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -189,7 +189,7 @@ html_static_path = ['_static']
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'GlanceReleaseNotesdoc'
+htmlhelp_basename = '{{cookiecutter.help_name }}ReleaseNotesdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -209,8 +209,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'GlanceReleaseNotes.tex', u'Glance Release Notes Documentation',
-     u'Glance Developers', 'manual'),
+    ('index', '{{cookiecutter.help_name }}ReleaseNotes.tex', u'{{cookiecutter.call_by_name }} Release Notes Documentation',
+     u'{{cookiecutter.call_by_name }} Developers', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -239,8 +239,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'glancereleasenotes', u'Glance Release Notes Documentation',
-     [u'Glance Developers'], 1)
+    ('index', '{{cookiecutter.module_name }}releasenotes', u'{{cookiecutter.call_by_name }} Release Notes Documentation',
+     [u'{{cookiecutter.call_by_name }} Developers'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -253,8 +253,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'GlanceReleaseNotes', u'Glance Release Notes Documentation',
-     u'Glance Developers', 'GlanceReleaseNotes',
+    ('index', '{{cookiecutter.help_name }}ReleaseNotes', u'{{cookiecutter.call_by_name }} Release Notes Documentation',
+     u'{{cookiecutter.call_by_name }} Developers', '{{cookiecutter.help_name }}ReleaseNotes',
      'One line description of project.',
      'Miscellaneous'),
 ]

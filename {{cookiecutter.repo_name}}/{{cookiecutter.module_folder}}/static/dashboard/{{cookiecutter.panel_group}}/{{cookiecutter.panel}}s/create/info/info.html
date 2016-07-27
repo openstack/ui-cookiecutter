@@ -1,0 +1,12 @@
+<div ng-controller="create{{cookiecutter.panel_func}}InfoController as ctrl">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="{{cookiecutter.panel}}-name" translate>{{cookiecutter.panel_func}} Name</label>
+        <input name="{{cookiecutter.panel}}-name" type="text" class="form-control" id="{{cookiecutter.panel}}-name"
+               ng-model="model.newSpec.name"
+               placeholder="{$ 'Name of the {{cookiecutter.panel}} to create.'|translate $}">
+      </div>
+    </div>
+  </div>
+</div>
