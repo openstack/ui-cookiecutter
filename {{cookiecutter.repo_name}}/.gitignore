@@ -1,11 +1,21 @@
 AUTHORS
 ChangeLog
 build
+cover
 doc/source/sourcecode
+node_modules
+npm-debug.log
+releasenotes/build
 {{ cookiecutter.module_folder }}/test/.secret_key_store
-.venv
+.coverage*
+.jshintrc
+.project
+.pydevproject
+.settings
 .tox
-*.py[cod]
-*.lock
+.venv
 *.egg*
+*.lock
+*.mo
+*.py[cod]
 *.swp
