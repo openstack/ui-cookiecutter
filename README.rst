@@ -1,16 +1,19 @@
-======================
-cookiecutter-openstack
-======================
+===============
+ui-cookiecutter
+===============
 
 Cookiecutter template for an OpenStack Dashboard UI plugin project. See https://github.com/audreyr/cookiecutter.
 
 * Free software: Apache license
 * pbr_: Set up to use Python Build Reasonableness
 * hacking_: Enforces the OpenStack Hacking Guidelines
+* eslint_: Enfoces the JavaScript Guidelines
 * testrepository_: Runs tests using testrepository
 * OpenStack-Infra_: Ready for OpenStack Continuous Integration testing
-* Tox_ testing: Setup to easily test for Python 2.6, 2.7, 3.3, 3.4
+* Tox_ testing: Setup to easily test for Python 2.7, 3.4
+* karma_ testing: Setup to easily test for JavaScript
 * Sphinx_ docs: Documentation ready for generation and publication
+* reno_ : Sphinx extension for Release Notes
 
 Usage
 -----
@@ -35,8 +38,12 @@ Then:
 
 
 .. _pbr: http://docs.openstack.org/developer/pbr
+.. _hacking: https://git.openstack.org/cgit/openstack-dev/hacking/plain/HACKING.rst
+.. _eslint: http://eslint.org/
 .. _OpenStack-Infra: http://docs.openstack.org/infra/system-config
 .. _testrepository: https://testrepository.readthedocs.org/
 .. _Tox: http://testrun.org/tox/
+.. _karma: https://github.com/karma-runner/karma
 .. _Sphinx: http://sphinx-doc.org/
-.. _hacking: https://git.openstack.org/cgit/openstack-dev/hacking/plain/HACKING.rst
+.. _reno: http://docs.openstack.org/developer/reno/
+
