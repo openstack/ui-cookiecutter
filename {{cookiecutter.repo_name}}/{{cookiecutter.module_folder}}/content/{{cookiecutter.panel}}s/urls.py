@@ -11,9 +11,9 @@
 #    under the License.
 
 from django.conf.urls import url
-from {{cookiecutter.module_folder}}.content.{{cookiecutter.panel}}s.views import IndexView
+from {{cookiecutter.module_folder}}.content.{{cookiecutter.panel}}s import views
 
 
 urlpatterns = [
-    url('', IndexView.as_view(), name='index'),
+    url('', views.IndexView.as_view(), name='index'),
 ]
