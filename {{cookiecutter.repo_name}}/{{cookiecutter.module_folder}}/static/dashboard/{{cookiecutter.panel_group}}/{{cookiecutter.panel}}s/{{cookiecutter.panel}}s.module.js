@@ -48,12 +48,12 @@
 
   run.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
-    'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}',
+    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.service',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.basePath',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType'
   ];
 
-  function run(registry, api, basePath, resourceType) {
+  function run(registry, service, basePath, resourceType) {
     registry.getResourceType(resourceType)
     .setNames(gettext('{{cookiecutter.panel_func}}'), gettext('{{cookiecutter.panel_func}}s'))
     // for detail summary view on table row 
@@ -65,14 +65,14 @@
     .setProperty('id', {
       label: gettext('ID')
     })
-    .setListFunction(listFunction)
+    .setListFunction(service.getPromise)
     .tableColumns
     .append({
       id: 'name',
       priority: 1,
       sortDefault: true,
       filters: ['noName'],
-      urlFunction: urlFunction
+      urlFunction: service.urlFunction
     })
     .append({
       id: 'id',
@@ -90,23 +90,6 @@
       'name': 'id',
       'singleton': true
     });
-
-    function listFunction(params) {
-      return api.get{{cookiecutter.panel_func}}s(params).then(modifyResponse);
-
-      function modifyResponse(response) {
-        return {data: {items: response.data.items.map(addTrackBy)}};
-
-        function addTrackBy(item) {
-          item.trackBy = item.id;
-          return item;
-        }
-      }
-    }
-
-    function urlFunction(item) {
-      return 'project/ngdetails/OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}/' + item.id;
-    }
   }
 
   config.$inject = [
