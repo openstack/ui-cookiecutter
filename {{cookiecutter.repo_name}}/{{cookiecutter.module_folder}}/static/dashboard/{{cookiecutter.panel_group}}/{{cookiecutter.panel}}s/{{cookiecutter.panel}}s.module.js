@@ -126,7 +126,7 @@
   function config($provide, $windowProvider, $routeProvider) {
     var path = $windowProvider.$get().STATIC_URL + 'dashboard/{{cookiecutter.panel_group}}/{{cookiecutter.panel}}s/';
     $provide.constant('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.basePath', path);
-    $routeProvider.when('/{{cookiecutter.dashboard}}/{{cookiecutter.panel}}s/', {
+    $routeProvider.when('/{{cookiecutter.dashboard}}/{{cookiecutter.panel}}s', {
       templateUrl: path + 'panel.html'
     });
   }
