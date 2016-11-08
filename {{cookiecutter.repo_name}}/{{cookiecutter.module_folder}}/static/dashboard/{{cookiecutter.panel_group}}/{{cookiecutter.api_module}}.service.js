@@ -42,14 +42,16 @@
     function create{{cookiecutter.panel_func}}(params) {
       return apiService.post('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/', params)
         .error(function() {
-          toastService.add('error', gettext('Unable to create {{cookiecutter.panel_func}}'));
+          var msg = gettext('Unable to create the {{cookiecutter.panel_func}} with name: %(name)s');
+          toastService.add('error', interpolate(msg, { name: params.name }, true));
         });
     }
 
     function get{{cookiecutter.panel_func}}(id) {
       return apiService.get('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/' + id)
         .error(function() {
-          toastService.add('error', gettext('Unable to retrieve the {{cookiecutter.panel_func}}.'));
+          var msg = gettext('Unable to retrieve the {{cookiecutter.panel_func}} with id: %(id)s.');
+          toastService.add('error', interpolate(msg, {id: id}, true));
         });
     }
 
@@ -66,14 +68,6 @@
         var msg = gettext('Unable to delete the {{cookiecutter.panel_func}} with id: %(id)s');
         toastService.add('error', interpolate(msg, { id: id }, true));
       });
-    }
-
-    // FIXME(shu-mutou): Unused for batch-delete in Horizon framework in Feb, 2016.
-    function delete{{cookiecutter.panel_func}}s(ids) {
-      return apiService.delete('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/', ids)
-        .error(function() {
-          toastService.add('error', gettext('Unable to delete the {{cookiecutter.panel_func}}s.'));
-        })
     }
   }
 }());

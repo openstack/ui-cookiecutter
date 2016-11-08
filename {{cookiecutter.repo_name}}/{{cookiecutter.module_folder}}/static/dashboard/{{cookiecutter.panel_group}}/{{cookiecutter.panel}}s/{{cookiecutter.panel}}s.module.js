@@ -59,12 +59,7 @@
     // for detail summary view on table row 
     .setSummaryTemplateUrl(basePath + 'details/drawer.html')
     // for table row items and detail summary view.
-    .setProperty('name', {
-      label: gettext('Name')
-    })
-    .setProperty('id', {
-      label: gettext('ID')
-    })
+    .setProperties(properties())
     .setListFunction(service.getPromise)
     .tableColumns
     .append({
@@ -75,7 +70,11 @@
       urlFunction: service.urlFunction
     })
     .append({
-      id: 'id',
+      id: 'created_at',
+      priority: 2
+    })
+    .append({
+      id: 'updated_at',
       priority: 2
     });
     // for magic-search
@@ -90,6 +89,15 @@
       'name': 'id',
       'singleton': true
     });
+  }
+
+  function properties() {
+    return {
+      id: { label: gettext('ID'), filters: ['noValue'] },
+      name: { label: gettext('Name'), filters: ['noName'] },
+      created_at: { label: gettext('Created'), filters: ['simpleDate', 'noValue'] },
+      updated_at: { label: gettext('Updated'), filters: ['simpleDate', 'noValue'] }
+    };
   }
 
   config.$inject = [

@@ -1,26 +1,15 @@
 <div ng-controller="horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.OverviewController as ctrl">
   <div class="row">
-    <div class="col-md-6 detail">
-      <h3 translate>Info</h3>
+    <div class="col-md-12 detail">
+      <h3 translate>Node</h3>
       <hr>
-      <dl class="dl-horizontal">
-        <dt translate>Name</dt>
-        <dd>{$ ctrl.{{cookiecutter.panel}}.name|noName $}</dd>
-      </dl>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 detail">
-      <h3 translate>Record Properties</h3>
-      <hr>
-      <dl class="dl-horizontal">
-        <dt translate>Created</dt>
-        <dd>{$ ctrl.{{cookiecutter.panel}}.created_at | date:'short' $}</dd>
-        <dt translate>Updated</dt>
-        <dd>{$ ctrl.{{cookiecutter.panel}}.updated_at | date:'short' $}</dd>
-        <dt translate>ID</dt>
-        <dd>{$ ctrl.{{cookiecutter.panel}}.id $}</dd>
-      </dl>
+      <hz-resource-property-list
+        resource-type-name="OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}"
+        cls="dl-horizontal"
+        item="ctrl.{{cookiecutter.panel}}"
+        property-groups="[['name'],
+                          ['id', 'created_at', 'updated_at']]">
+      </hz-resource-property-list>
     </div>
   </div>
 </div>

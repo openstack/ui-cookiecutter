@@ -1,16 +1,17 @@
-<div ng-controller="horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.DrawerController as drawerCtrl">
-  <div class="row">
-    <span class="rsp-alt-p2">
-      <dl class="col-md-5">
-        <dt translate>ID</dt>
-        <dd>{$ item.id $}</dd>
-      </dl>
-    </span>
-  </div>
-  <div class="row">
-    <dl class="col-md-5">
-      <dt translate>Name</dt>
-      <dd>{$ item.name $}</dd>
-    </dl>
-  </div>
+<div class="row">
+  <dl class="col-md-4">
+    <dt translate>ID</dt>
+    <dd>{$ item.id $}</dd>
+  </dl>
 </div>
+<div class="row rsp-alt-p2">
+  <dl class="col-md-4">
+    <dt translate>Created</dt>
+    <dd>{$ item.created_at | date:'short' | noValue $}</dd>
+  </dl>
+  <dl class="col-md-4">
+    <dt translate>Updated</dt>
+    <dd>{$ item.updated_at | date:'short' | noValue $}</dd>
+  </dl>
+</div>
+
