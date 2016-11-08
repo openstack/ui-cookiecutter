@@ -41,16 +41,7 @@
     };
 
     function getPromise(params) {
-      return api.get{{cookiecutter.panel_func}}s(params).then(modifyResponse);
-
-      function modifyResponse(response) {
-        return {data: {items: response.data.items.map(addTrackBy)}};
-
-        function addTrackBy(item) {
-          item.trackBy = item.id;
-          return item;
-        }
-      }
+      return api.get{{cookiecutter.panel_func}}s(params);
     }
 
     function urlFunction(item) {
