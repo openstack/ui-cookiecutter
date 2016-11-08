@@ -20,7 +20,7 @@ Usage
 
 Generate a Python package project::
 
-    cookiecutter https://git.openstack.org/shu-mutou/ui-cookiecutter.git
+    cookiecutter https://github.com/shu-mutou/ui-cookiecutter.git
 
 OpenStack projects require a working git repo for pbr to work, on newer
 versions of cookiecutter (>= 0.7.0 released 2013-11-09) this inital commit will
