@@ -30,7 +30,6 @@
       get{{cookiecutter.panel_func}}: get{{cookiecutter.panel_func}},
       get{{cookiecutter.panel_func}}s: get{{cookiecutter.panel_func}}s,
       delete{{cookiecutter.panel_func}}: delete{{cookiecutter.panel_func}},
-      delete{{cookiecutter.panel_func}}s: delete{{cookiecutter.panel_func}}s,
     };
 
     return service;

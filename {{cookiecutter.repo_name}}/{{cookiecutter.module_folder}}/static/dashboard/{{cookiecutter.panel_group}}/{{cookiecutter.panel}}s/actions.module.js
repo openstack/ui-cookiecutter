@@ -23,9 +23,9 @@
    * Provides all of the actions for {{cookiecutter.panel_func}}s.
    */
   angular.module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.actions', ['horizon.framework', 'horizon.dashboard.{{cookiecutter.panel_group}}'])
-   .run(register);
+   .run(register{{cookiecutter.panel_func}}Actions);
 
-  register.$inject = [
+  register{{cookiecutter.panel_func}}Actions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.create.service',

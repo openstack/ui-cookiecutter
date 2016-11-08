@@ -1,7 +1,7 @@
 <div ng-controller="horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.OverviewController as ctrl">
   <div class="row">
     <div class="col-md-12 detail">
-      <h3 translate>Node</h3>
+      <h3 translate>{{cookiecutter.panel_func}}</h3>
       <hr>
       <hz-resource-property-list
         resource-type-name="OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}"
