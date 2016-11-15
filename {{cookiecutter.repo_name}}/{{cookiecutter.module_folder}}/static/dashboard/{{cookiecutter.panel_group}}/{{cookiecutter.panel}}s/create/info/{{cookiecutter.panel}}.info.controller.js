@@ -36,5 +36,111 @@
 
   function create{{cookiecutter.panel_func}}InfoController($q, $scope, basePath, api, gettext) {
     var ctrl = this;
+
+    var createInfoSchema = {
+      type: 'object',
+      properties: {
+        name: {
+          title: gettext('Name'),
+          type: 'string'
+        },
+        description: {
+          title: gettext('Description'),
+          type: 'string'
+        },
+        enabled: {
+          title: gettext('Enabled'),
+          type: 'boolean',
+          default: true
+        },
+        size: {
+          title: gettext('Size'),
+          type: 'string',
+          default: 'M'
+        },
+        base: {
+          title: gettext('Base'),
+          type: 'string'
+        },
+        flavor: {
+          title: gettext('Flavor'),
+          type: 'string'
+        },
+        topping: {
+          title: gettext('Topping'),
+          type: 'string'
+        }
+
+      },
+      required: ['name', 'base']
+    };
+
+    var createInfoForm = [
+      {
+        type: 'section',
+        htmlClass: 'row',
+        items: [
+          {
+            type: 'section',
+            htmlClass: 'col-sm-12',
+            items: [
+              // info tab
+              {
+                key: 'name',
+                placeholder: gettext('Name of the {{cookiecutter.panel}} to create.')
+              },
+              {
+                key: 'description',
+                type: 'textarea'
+              },
+              {
+                key: 'enabled',
+                type: 'checkboxes',
+                titleMap: [
+                  {value: true, name: ''},
+                ]
+              },
+              // spec tab
+              {
+                key: 'size',
+                type: 'radiobuttons'
+                titleMap: [
+                  // get options from API
+                  {value: 'S', name: gettext('Small')},
+                  {value: 'M', name: gettext('Medium')},
+                  {value: 'L', name: gettext('Large')},
+                  {value: 'XL', name: gettext('Extra Large')}
+                ]
+              },
+              {
+                key: 'base',
+                type: 'select'
+                titleMap: [
+                  // get options from API
+                ]
+              },
+              {
+                key: 'flavor',
+                type: 'select'
+                titleMap: [
+                  // get options from API
+                ]
+              },
+              {
+                key: 'topping',
+                type: 'checkboxes'
+                titleMap: [
+                  // get options from API
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    ctrl.schema = createInfoSchema;
+    ctrl.form = createInfoForm;
+    ctrl.model = model.spec;
   }
 })();

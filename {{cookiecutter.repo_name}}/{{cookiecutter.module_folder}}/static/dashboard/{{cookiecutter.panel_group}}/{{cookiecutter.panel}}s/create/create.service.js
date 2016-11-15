@@ -39,7 +39,7 @@
   ];
 
   function createService(
-    $location, policy, actionResult, gettext, $qExtensions, wizardModalService, toast, model, events, resourceType, createWorkflow
+    $location, policy, actionResult, gettext, $qExtensions, wizardModalService, toast, model, events, resourceType, workflow
   ) {
 
     var scope;
@@ -59,7 +59,7 @@
 
     function initScope($scope) {
       scope = $scope;
-      scope.workflow = createWorkflow;
+      scope.workflow = workflow;
       scope.model = model;
       scope.$on('$destroy', function() {
       });
@@ -71,7 +71,7 @@
       scope.selected = selected;
       return wizardModalService.modal({
         scope: scope,
-        workflow: createWorkflow,
+        workflow: workflow,
         submit: submit
       }).result;
     }

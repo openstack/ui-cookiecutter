@@ -25,26 +25,32 @@
 
   function {{cookiecutter.panel}}Model(api) {
     var model = {
-      newSpec: {},
+      spec: {},
 
       // API methods
       init: init,
       create{{cookiecutter.panel_func}}: create{{cookiecutter.panel_func}}
     };
 
-    function initNewSpec() {
-      model.newSpec = {
-        name: null,
+    function initSpec() {
+      model.spec = {
+        name: null,  // text required
+        description: null,  // textarea
+        enabled: true,  // checkbox
+        size: null,  // radio
+        base: "",  // select required
+        flavor: "",  // select
+        topping: null,  // checkboxes
       };
     }
 
     function init() {
       // Reset the new {{cookiecutter.panel_func}} spec
-      initNewSpec();
+      initSpec();
     }
 
     function create{{cookiecutter.panel_func}}() {
-      var finalSpec = angular.copy(model.newSpec);
+      var finalSpec = angular.copy(model.spec);
 
       cleanNullProperties(finalSpec);
 
