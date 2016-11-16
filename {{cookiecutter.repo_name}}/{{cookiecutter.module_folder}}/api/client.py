@@ -26,7 +26,8 @@ import uuid
 
 LOG = logging.getLogger(__name__)
 
-CREATE_ATTRS = ['name']
+ATTRIBUTES = ['name', 'description', 'enabled', 'size', 'temperature',
+                'base', 'flavor', 'topping']
 
 STUB_DATA = {}
 
@@ -68,18 +69,11 @@ def apiclient(request):
 def {{cookiecutter.panel}}_create(request, **kwargs):
     args = {}
     for (key, value) in kwargs.items():
-        if key in CREATE_ATTRS:
-            args[str(key)] = str(value)
+        if key in ATTRIBUTES:
+            args[str(key)] = value
         else:
             raise exceptions.BadRequest(
-                "Key must be in %s" % ",".join(CREATE_ATTRS))
-        if key == "labels":
-            labels = {}
-            vals = value.split(",")
-            for v in vals:
-                kv = v.split("=", 1)
-                labels[kv[0]] = kv[1]
-            args["labels"] = labels
+                "Key must be in %s" % ",".join(ATTRIBUTES))
     #created = apiclient(request).{{cookiecutter.panel}}s.create(**args)
 
     # create dummy response
@@ -90,6 +84,26 @@ def {{cookiecutter.panel}}_create(request, **kwargs):
     STUB_DATA[created.uuid] = created
 
     return created
+
+
+def {{cookiecutter.panel}}_update(request, id, **kwargs):
+    args = {}
+    for (key, value) in kwargs.items():
+        if key in ATTRIBUTES:
+            args[str(key)] = value
+        else:
+            raise exceptions.BadRequest(
+                "Key must be in %s" % ",".join(ATTRIBUTES))
+    #updated = apiclient(request).{{cookiecutter.panel}}.update(id, **args)
+
+    # update dummy response
+    args["uuid"] = id
+    updated = StubResponse(args)
+    for k in args:
+        setattr(updated, k, args[k])
+    STUB_DATA[updated.uuid] = updated
+
+    return updated
 
 
 def {{cookiecutter.panel}}_delete(request, id):

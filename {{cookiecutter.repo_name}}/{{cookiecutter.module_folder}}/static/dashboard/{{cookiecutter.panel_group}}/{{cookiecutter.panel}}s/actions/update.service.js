@@ -17,14 +17,14 @@
 
   /**
    * @ngdoc overview
-   * @name horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.create.service
-   * @description Service for the {{cookiecutter.panel}} create modal
+   * @name horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.update.service
+   * @description Service for the {{cookiecutter.panel}} update modal
    */
   angular
     .module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s')
-    .factory('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.create.service', createService);
+    .factory('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.update.service', updateService);
 
-  createService.$inject = [
+  updateService.$inject = [
     '$location',
     'horizon.app.core.openstack-service-api.policy',
     'horizon.framework.util.actions.action-result.service',
@@ -32,19 +32,19 @@
     'horizon.framework.util.q.extensions',
     'horizon.framework.widgets.modal.wizard-modal.service',
     'horizon.framework.widgets.toast.service',
-    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.{{cookiecutter.panel}}Model',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.events',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.workflow'
   ];
 
-  function createService(
-    $location, policy, actionResult, gettext, $qExtensions, wizardModalService, toast, model, events, resourceType, workflow
+  function updateService(
+    $location, policy, actionResult, gettext, $qExtensions, wizardModalService,
+    toast, events, resourceType, workflow
   ) {
 
     var scope;
     var message = {
-      success: gettext('{{cookiecutter.panel_func}} %s was successfully created.')
+      success: gettext('{{cookiecutter.panel_func}} %s was successfully updated.')
     };
 
     var service = {
@@ -60,18 +60,16 @@
     function initScope($scope) {
       scope = $scope;
       scope.workflow = workflow;
-      scope.model = model;
       scope.$on('$destroy', function() {
       });
     }
 
     function perform(selected) {
-      scope.model.init();
-      // for creation according to selected item
+      // to use selected item for step controllers
       scope.selected = selected;
       return wizardModalService.modal({
         scope: scope,
-        workflow: workflow,
+        workflow: workflow.init('update', selected.id),
         submit: submit
       }).result;
     }
@@ -82,15 +80,15 @@
     }
 
     function submit(){
-      return model.create{{cookiecutter.panel_func}}().then(success);
+      return workflow.save().then(success);
     }
 
     function success(response) {
       response.data.id = response.data.uuid;
       toast.add('success', interpolate(message.success, [response.data.id]));
       var result = actionResult.getActionResult()
-                   .created(resourceType, response.data.id);
-      if(result.result.failed.length == 0 && result.result.created.length > 0){
+                   .updated(resourceType, response.data.id);
+      if(result.result.failed.length == 0 && result.result.updated.length > 0){
         $location.path('/{{cookiecutter.dashboard}}/{{cookiecutter.panel}}s');
       }else{
         return result.result;

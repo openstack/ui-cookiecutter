@@ -15,54 +15,64 @@
 (function() {
   'use strict';
 
+  /**
+   * @ngdoc model
+   * @name horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.model
+   * @description Service for the {{cookiecutter.panel}} model
+   */
   angular
     .module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s')
-    .factory('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.{{cookiecutter.panel}}Model', {{cookiecutter.panel}}Model);
+    .factory('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.model', model);
 
-  {{cookiecutter.panel}}Model.$inject = [
+  model.$inject = [
     'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}'
   ];
 
-  function {{cookiecutter.panel}}Model(api) {
+  function model(api) {
     var model = {
+      // params
       spec: {},
+      type: '',
 
-      // API methods
+      // methods
       init: init,
-      create{{cookiecutter.panel_func}}: create{{cookiecutter.panel_func}}
+      save: save
     };
 
-    function initSpec() {
+    function init(type, id) {
+      model.type = type;
+      // Reset model
       model.spec = {
+        id: id,
         name: null,  // text required
         description: null,  // textarea
         enabled: true,  // checkbox
-        size: null,  // radio
-        base: "",  // select required
-        flavor: "",  // select
-        topping: null,  // checkboxes
+        size: 'M',  // radio
+        temperature: 'H',  // radio
+        base: null,  // select required
+        flavor: null,  // select
+        topping: null  // checkboxes
       };
     }
 
-    function init() {
-      // Reset the new {{cookiecutter.panel_func}} spec
-      initSpec();
-    }
-
-    function create{{cookiecutter.panel_func}}() {
+    function save() {
       var finalSpec = angular.copy(model.spec);
-
       cleanNullProperties(finalSpec);
 
-      return api.create{{cookiecutter.panel_func}}(finalSpec);
+      var id = finalSpec.id;
+      delete finalSpec.id;
+      if (model.type === 'create') {
+        delete finalSpec.id;
+        return api.create{{cookiecutter.panel_func}}(finalSpec);
+      } else {
+        return api.update{{cookiecutter.panel_func}}(id, finalSpec);
+      }
     }
 
     function cleanNullProperties(finalSpec) {
       // Initially clean fields that don't have any value.
-      // Not only "null", blank too.
       for (var key in finalSpec) {
-        if (finalSpec.hasOwnProperty(key) && finalSpec[key] === null
-             || finalSpec[key] === "") {
+        if (finalSpec.hasOwnProperty(key) && finalSpec[key] === null) {
           delete finalSpec[key];
         }
       }

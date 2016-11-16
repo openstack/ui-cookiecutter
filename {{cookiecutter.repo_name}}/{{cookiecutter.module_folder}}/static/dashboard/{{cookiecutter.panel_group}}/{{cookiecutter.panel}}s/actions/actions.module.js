@@ -22,13 +22,18 @@
    * @description
    * Provides all of the actions for {{cookiecutter.panel_func}}s.
    */
-  angular.module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.actions', ['horizon.framework', 'horizon.dashboard.{{cookiecutter.panel_group}}'])
-   .run(register{{cookiecutter.panel_func}}Actions);
+  angular
+    .module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.actions', [
+      'horizon.framework',
+      'horizon.dashboard.{{cookiecutter.panel_group}}'
+    ])
+    .run(register{{cookiecutter.panel_func}}Actions);
 
   register{{cookiecutter.panel_func}}Actions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.create.service',
+    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.update.service',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.delete.service',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType',
   ];
@@ -37,21 +42,12 @@
     registry,
     gettext,
     create{{cookiecutter.panel_func}}Service,
+    update{{cookiecutter.panel_func}}Service,
     delete{{cookiecutter.panel_func}}Service,
     resourceType)
   {
     var {{cookiecutter.panel}}sResourceType = registry.getResourceType(resourceType);
-    {{cookiecutter.panel}}sResourceType.itemActions
-      .append({
-        id: 'delete{{cookiecutter.panel_func}}Action',
-        service: delete{{cookiecutter.panel_func}}Service,
-        template: {
-          type: 'delete',
-          text: gettext('Delete {{cookiecutter.panel_func}}')
-        }
-      });
-
-    {{cookiecutter.panel}}sResourceType.batchActions
+    {{cookiecutter.panel}}sResourceType.globalActions
       .append({
         id: 'create{{cookiecutter.panel_func}}Action',
         service: create{{cookiecutter.panel_func}}Service,
@@ -60,6 +56,8 @@
           text: gettext('Create {{cookiecutter.panel_func}}')
         }
       })
+
+    {{cookiecutter.panel}}sResourceType.batchActions
       .append({
         id: 'batchDelete{{cookiecutter.panel_func}}Action',
         service: delete{{cookiecutter.panel_func}}Service,
@@ -68,6 +66,23 @@
           text: gettext('Delete {{cookiecutter.panel_func}}s')
         }
       });
-  }
 
+    {{cookiecutter.panel}}sResourceType.itemActions
+      .append({
+        id: 'update{{cookiecutter.panel_func}}Action',
+        service: update{{cookiecutter.panel_func}}Service,
+        template: {
+          type: 'item',
+          text: gettext('Update {{cookiecutter.panel_func}}')
+        }
+      })
+      .append({
+        id: 'delete{{cookiecutter.panel_func}}Action',
+        service: delete{{cookiecutter.panel_func}}Service,
+        template: {
+          type: 'delete',
+          text: gettext('Delete {{cookiecutter.panel_func}}')
+        }
+      });
+  }
 })();

@@ -38,6 +38,17 @@ class {{cookiecutter.panel_func}}(generic.View):
         """Get a specific {{cookiecutter.panel}}"""
         return change_to_id(client.{{cookiecutter.panel}}_show(request, id).to_dict())
 
+    @rest_utils.ajax(data_required=True)
+    def post(self, request, id):
+        """Update a {{cookiecutter.panel_func}}.
+
+        Returns the updated {{cookiecutter.panel_func}} object on success.
+        """
+        {{cookiecutter.panel}} = client.{{cookiecutter.panel}}_update(request, id, **request.DATA)
+        return rest_utils.CreatedResponse(
+            '/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}/%s' % {{cookiecutter.panel}}.uuid,
+            {{cookiecutter.panel}}.to_dict())
+
 
 @urls.register
 class {{cookiecutter.panel_func}}s(generic.View):
@@ -64,12 +75,12 @@ class {{cookiecutter.panel_func}}s(generic.View):
             client.{{cookiecutter.panel}}_delete(request, id)
 
     @rest_utils.ajax(data_required=True)
-    def post(self, request):
+    def put(self, request):
         """Create a new {{cookiecutter.panel_func}}.
 
         Returns the new {{cookiecutter.panel_func}} object on success.
         """
-        new_resource = client.{{cookiecutter.panel}}_create(request, **request.DATA)
+        {{cookiecutter.panel}} = client.{{cookiecutter.panel}}_create(request, **request.DATA)
         return rest_utils.CreatedResponse(
-            '/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}/%s' % new_resource.uuid,
-            new_resource.to_dict())
+            '/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}/%s' % {{cookiecutter.panel}}.uuid,
+            {{cookiecutter.panel}}.to_dict())

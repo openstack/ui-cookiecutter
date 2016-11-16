@@ -26,9 +26,10 @@
 
   function API(apiService, toastService, gettext) {
     var service = {
-      create{{cookiecutter.panel_func}}: create{{cookiecutter.panel_func}},
       get{{cookiecutter.panel_func}}: get{{cookiecutter.panel_func}},
       get{{cookiecutter.panel_func}}s: get{{cookiecutter.panel_func}}s,
+      create{{cookiecutter.panel_func}}: create{{cookiecutter.panel_func}},
+      update{{cookiecutter.panel_func}}: update{{cookiecutter.panel_func}},
       delete{{cookiecutter.panel_func}}: delete{{cookiecutter.panel_func}},
     };
 
@@ -37,14 +38,6 @@
     ///////////////
     // {{cookiecutter.panel_func}}s //
     ///////////////
-
-    function create{{cookiecutter.panel_func}}(params) {
-      return apiService.post('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/', params)
-        .error(function() {
-          var msg = gettext('Unable to create the {{cookiecutter.panel_func}} with name: %(name)s');
-          toastService.add('error', interpolate(msg, { name: params.name }, true));
-        });
-    }
 
     function get{{cookiecutter.panel_func}}(id) {
       return apiService.get('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/' + id)
@@ -58,6 +51,22 @@
       return apiService.get('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/')
         .error(function() {
           toastService.add('error', gettext('Unable to retrieve the {{cookiecutter.panel_func}}s.'));
+        });
+    }
+
+    function create{{cookiecutter.panel_func}}(params) {
+      return apiService.put('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/', params)
+        .error(function() {
+          var msg = gettext('Unable to create the {{cookiecutter.panel_func}} with name: %(name)s');
+          toastService.add('error', interpolate(msg, { name: params.name }, true));
+        });
+    }
+
+    function update{{cookiecutter.panel_func}}(id, params) {
+      return apiService.post('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/' + id, params)
+        .error(function() {
+          var msg = gettext('Unable to update the {{cookiecutter.panel_func}} with id: %(id)s');
+          toastService.add('error', interpolate(msg, { id: params.id }, true));
         });
     }
 

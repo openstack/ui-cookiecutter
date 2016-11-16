@@ -1,11 +1,3 @@
-  describe('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s', function() {
-    it('should exist', function() {
-      expect(angular.module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s')).toBeDefined();
-    });
-  });
-
-})();
-
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

@@ -70,6 +70,31 @@
       urlFunction: service.urlFunction
     })
     .append({
+      id: 'size',
+      priority: 1,
+      filters: ['noValue']
+    })
+    .append({
+      id: 'temperature',
+      priority: 1,
+      filters: ['noValue']
+    })
+    .append({
+      id: 'base',
+      priority: 1,
+      filters: ['noValue']
+    })
+    .append({
+      id: 'flavor',
+      priority: 1,
+      filters: ['noValue']
+    })
+    .append({
+      id: 'topping',
+      priority: 2,
+      filters: ['noValue']
+    })
+    .append({
       id: 'created_at',
       priority: 2
     })
@@ -85,6 +110,16 @@
       'singleton': true
     })
     .append({
+      'label': gettext('Base'),
+      'name': 'base',
+      'singleton': true
+    })
+    .append({
+      'label': gettext('Flavor'),
+      'name': 'flavor',
+      'singleton': true
+    })
+    .append({
       'label': gettext('ID'),
       'name': 'id',
       'singleton': true
@@ -95,6 +130,13 @@
     return {
       id: { label: gettext('ID'), filters: ['noValue'] },
       name: { label: gettext('Name'), filters: ['noName'] },
+      description: { label: gettext('Description'), filters: ['noValue'] },
+      enabled: { label: gettext('Enabled'), filters: ['yesno'] },
+      size: { label: gettext('Size'), filters: ['noValue'] },
+      temperature: { label: gettext('Temperature'), filters: ['noValue'] },
+      base: { label: gettext('Base'), filters: ['noValue'] },
+      flavor: { label: gettext('Flavor'), filters: ['noValue'] },
+      topping: { label: gettext('Topping'), filters: ['noValue'] },
       created_at: { label: gettext('Created'), filters: ['simpleDate', 'noValue'] },
       updated_at: { label: gettext('Updated'), filters: ['simpleDate', 'noValue'] }
     };

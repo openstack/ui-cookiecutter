@@ -22,21 +22,24 @@
    * @description
    * Provides details features for {{cookiecutter.panel_func}}.
    */
-  angular.module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.details',
-                 ['horizon.framework.conf', 'horizon.app.core'])
-  .run(registerDetails);
+  angular
+    .module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.details', [
+      'horizon.app.core',
+      'horizon.framework.conf'
+    ])
+    .run(registerDetails);
 
   registerDetails.$inject = [
+    'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.basePath',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType',
-    'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}',
     'horizon.framework.conf.resource-type-registry.service'
   ];
 
   function registerDetails(
+    api,
     basePath,
     resourceType,
-    api,
     registry
   ) {
     registry.getResourceType(resourceType)
@@ -51,5 +54,4 @@
       return api.get{{cookiecutter.panel_func}}(identifier);
     }
   }
-
 })();

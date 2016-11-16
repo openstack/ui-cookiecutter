@@ -7,7 +7,8 @@
         resource-type-name="OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}"
         cls="dl-horizontal"
         item="ctrl.{{cookiecutter.panel}}"
-        property-groups="[['name'],
+        property-groups="[['name', 'description', 'enabled'],
+                          ['size', 'temperature', 'base', 'flavor', 'topping'],
                           ['id', 'created_at', 'updated_at']]">
       </hz-resource-property-list>
     </div>
