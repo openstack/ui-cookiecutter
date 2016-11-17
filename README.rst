@@ -2,7 +2,11 @@
 ui-cookiecutter
 ===============
 
-Cookiecutter template for an OpenStack Dashboard UI plugin project. See https://github.com/audreyr/cookiecutter.
+Cookiecutter template for an OpenStack Dashboard UI plugin project. This
+generate UI plugin project using Horizon Angular framework and the generated
+project includes sample panel with CRUD operations.
+
+See also https://github.com/audreyr/cookiecutter.
 
 * Free software: Apache license
 * pbr_: Set up to use Python Build Reasonableness
@@ -22,6 +26,15 @@ Generate a Python package project::
 
     cookiecutter https://github.com/shu-mutou/ui-cookiecutter.git
 
+Run with OpenStack Horizon::
+
+    cd <repo_name>
+    pip install
+    cp <repo_name>/<module_folder>/enabled/_90_project_<panel_group>_panelgroup.py <horizon-dir>/openstack_dashboard/local/enabled
+    cp <repo_name>/<module_folder>/enabled/_91_project_<panel_group>_<panel>s.py <horizon-dir>/openstack_dashboard/local/enabled
+
+then reboot the Horizon.
+
 OpenStack projects require a working git repo for pbr to work, on newer
 versions of cookiecutter (>= 0.7.0 released 2013-11-09) this inital commit will
 be done automatically. Otherwise you will need to init a repo and commit to it
@@ -32,7 +45,7 @@ before doing anything else::
     git add .
     git commit -a
 
-Then:
+Then::
 
 * Add the project to the OpenStack Infrastructure
 
