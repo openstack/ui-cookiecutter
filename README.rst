@@ -24,7 +24,7 @@ Usage
 
 Generate a Python package project::
 
-    cookiecutter https://github.com/shu-mutou/ui-cookiecutter.git
+    cookiecutter https://github.com/openstack/ui-cookiecutter.git
 
 Run with OpenStack Horizon::
 
