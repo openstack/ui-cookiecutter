@@ -25,59 +25,39 @@
     .factory('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.model', model);
 
   model.$inject = [
-    'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}'
   ];
 
-  function model(api) {
+  function model() {
     var model = {
       // params
-      spec: {},
-      type: '',
+      "spec": {},
 
       // methods
-      init: init,
-      save: save
+      "init": init,
+      "cleanProperties": cleanProperties
     };
 
-    function init(type, id) {
-      model.type = type;
-      // Reset model
+    function init() {
+      // initialize model
       model.spec = {
-        id: id,
-        name: null,  // text required
-        description: null,  // textarea
-        enabled: true,  // checkbox
-        size: 'M',  // radio
-        temperature: 'H',  // radio
-        base: null,  // select required
-        flavor: null,  // select
-        topping: null  // checkboxes
+        "id": "",
+        "name": "",  // text required
+        "description": "",  // textarea
+        "enabled": true,  // checkbox
+        "size": "M",  // radio
+        "temperature": "H",  // radio
+        "base": "",  // select
+        "flavor": "",  // select
+        "topping": ""  // checkboxes
       };
     }
 
-    function save() {
-      var finalSpec = angular.copy(model.spec);
-      cleanNullProperties(finalSpec);
-
-      var id = finalSpec.id;
-      delete finalSpec.id;
-      if (model.type === 'create') {
-        delete finalSpec.id;
-        return api.create{{cookiecutter.panel_func}}(finalSpec);
-      } else {
-        return api.update{{cookiecutter.panel_func}}(id, finalSpec);
-      }
-    }
-
-    function cleanNullProperties(finalSpec) {
-      // Initially clean fields that don't have any value.
-      for (var key in finalSpec) {
-        if (finalSpec.hasOwnProperty(key) && finalSpec[key] === null) {
-          delete finalSpec[key];
-        }
-      }
+    function cleanProperties() {
+      delete model.spec.id;
+      delete model.spec.tabs;
     }
 
     return model;
   }
 })();
+

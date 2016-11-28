@@ -26,23 +26,23 @@
 
   createService.$inject = [
     '$location',
+    'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}',
     'horizon.app.core.openstack-service-api.policy',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.framework.util.q.extensions',
-    'horizon.framework.widgets.modal.wizard-modal.service',
     'horizon.framework.widgets.toast.service',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.events',
+    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.model',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.workflow'
   ];
 
   function createService(
-    $location, policy, actionResult, gettext, $qExtensions, wizardModalService,
-    toast, events, resourceType, workflow
+    $location, api, policy, actionResult, gettext, $qExtensions,
+    toast, events, model, resourceType, workflow
   ) {
 
-    var scope;
     var message = {
       success: gettext('{{cookiecutter.panel_func}} %s was successfully created.')
     };
@@ -57,21 +57,19 @@
 
     //////////////
 
-    function initScope($scope) {
-      scope = $scope;
-      scope.workflow = workflow;
-      scope.$on('$destroy', function() {
-      });
+    function initScope() {
     }
 
-    function perform(selected) {
-      // for creation according to selected item
-      scope.selected = selected;
-      return wizardModalService.modal({
-        scope: scope,
-        workflow: workflow.init('create'),
-        submit: submit
-      }).result;
+    function perform() {
+      // modal title, buttons
+      var title, submitText, submitIcon;
+      title = gettext("Create {{cookiecutter.panel_func}}");
+      submitText = gettext("Create");
+      submitIcon = "fa fa-check";
+      model.init();
+
+      var result = workflow.init(title, submitText, submitIcon, model.spec);
+      return result.then(submit);
     }
 
     function allowed() {
@@ -80,7 +78,8 @@
     }
 
     function submit(){
-      return workflow.save().then(success);
+      model.cleanProperties();
+      return api.create{{cookiecutter.panel_func}}(model.spec).then(success);
     }
 
     function success(response) {

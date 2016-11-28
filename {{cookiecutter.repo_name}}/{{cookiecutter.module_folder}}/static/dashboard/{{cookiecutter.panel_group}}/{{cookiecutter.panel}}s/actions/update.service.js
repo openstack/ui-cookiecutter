@@ -26,23 +26,23 @@
 
   updateService.$inject = [
     '$location',
+    'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}',
     'horizon.app.core.openstack-service-api.policy',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.framework.util.q.extensions',
-    'horizon.framework.widgets.modal.wizard-modal.service',
     'horizon.framework.widgets.toast.service',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.events',
+    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.model',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.workflow'
   ];
 
   function updateService(
-    $location, policy, actionResult, gettext, $qExtensions, wizardModalService,
-    toast, events, resourceType, workflow
+    $location, api, policy, actionResult, gettext, $qExtensions,
+    toast, events, model, resourceType, workflow
   ) {
 
-    var scope;
     var message = {
       success: gettext('{{cookiecutter.panel_func}} %s was successfully updated.')
     };
@@ -53,25 +53,42 @@
       allowed: allowed
     };
 
+    var id;
+
     return service;
 
     //////////////
 
-    function initScope($scope) {
-      scope = $scope;
-      scope.workflow = workflow;
-      scope.$on('$destroy', function() {
-      });
+    function initScope() {
     }
 
     function perform(selected) {
-      // to use selected item for step controllers
-      scope.selected = selected;
-      return wizardModalService.modal({
-        scope: scope,
-        workflow: workflow.init('update', selected.id),
-        submit: submit
-      }).result;
+      // modal title, buttons
+      var title, submitText, submitIcon;
+      title = gettext("Update {{cookiecutter.panel_func}}");
+      submitText = gettext("Update");
+      submitIcon = "fa fa-check";
+      model.init();
+
+      // load current data
+      id = selected.id;
+      var deferred = api.get{{cookiecutter.panel_func}}(id);
+      deferred.then(onLoad);
+
+      function onLoad(response) {
+        model.spec.id = response.data.id;
+        model.spec.name = response.data.name;
+        model.spec.description = response.data.description;
+        model.spec.enabled = response.data.enabled;
+        model.spec.size = response.data.size;
+        model.spec.temperature = response.data.temperature;
+        model.spec.base = response.data.base;
+        model.spec.flavor = response.data.flavor;
+        model.spec.topping = response.data.topping;
+      }
+
+      var result = workflow.init(title, submitText, submitIcon, model.spec);
+      return result.then(submit);
     }
 
     function allowed() {
@@ -80,7 +97,8 @@
     }
 
     function submit(){
-      return workflow.save().then(success);
+      model.cleanProperties();
+      return api.update{{cookiecutter.panel_func}}(id, model.spec).then(success);
     }
 
     function success(response) {
