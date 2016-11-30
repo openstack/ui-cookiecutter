@@ -26,6 +26,28 @@ Generate a Python package project::
 
     cookiecutter https://github.com/openstack/ui-cookiecutter.git
 
+This command prompts interactive input. Please check these parameters::
+
+* "repo_group": The name for the git repo group. e.g. "openstack"
+* "repo_name": The name for the git repo. e.g. "cafe-ui",
+* "launchpad_project": The name of the project on launchpad. e.g. "cafe-ui",
+* "project_short_description": The short descriptions for your UI. e.g. "Cafe User Interface",
+* "help_name": The name for the help. e.g. "Cafe-UI",
+* "call_by_name": The name of this UI to write texts such as README or Help. e.g. "Cafe UI",
+* "module_name": The name of the python module. e.g. "cafe-ui"
+* "module_folder": The name for the module folder. e.g. "cafe_ui",
+* "dashboard": The slug of the "dashboard" you want to add this plugin into. e.g. "project",
+* "panel_group": The slug for the "panel_group". e.g. "cafe",
+* "panel_group_name": The caption for the "panel_group". e.g. "Cafe",
+* "panel": The slug of the "panel", in singular. e.g. "drink",
+* "panel_func": The function name for the "panel", in singular. e.g. "Drink",
+* "api_module": The name of the API service module. e.g. "cafe",
+* "api_name": The caption for the "api_module". e.g. "Cafe"
+
+If you want to generate without interactive input, you can use example values for these parameters as follow::
+
+   cookiecutter https://github.com/openstack/ui-cookiecutter.git --no-inputs
+
 Run with OpenStack Horizon::
 
     cd <repo_name>
