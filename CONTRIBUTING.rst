@@ -15,3 +15,23 @@ Pull requests submitted through GitHub will be ignored.
 Bugs should be filed on Launchpad, not GitHub:
 
    https://bugs.launchpad.net/ui-cookiecutter
+
+
+For developers and reviewers
+----------------------------
+
+To develop or review ui-cookiecutter, you can setup the environment as follows::
+
+#. install cookiecutter
+
+    pip install cookiecutter
+
+#. clone ui-cookiecutter git repository
+
+    git clone https://github.com/openstack/ui-cookiecutter.git
+
+#. create change for develop or cherry-pick / checkout for reviewing
+
+#. generate plugin as follows and check the change
+
+    cookiecutter <local repository>/ [--no-input]
