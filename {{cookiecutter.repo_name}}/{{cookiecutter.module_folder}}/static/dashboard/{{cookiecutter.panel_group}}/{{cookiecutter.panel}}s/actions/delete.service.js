@@ -15,6 +15,14 @@
 (function() {
   'use strict';
 
+  /**
+   * @ngDoc factory
+   * @name horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.delete.service
+   * @Description
+   * Brings up the delete {{cookiecutter.panel}}s confirmation modal dialog.
+   * On submit, delete selected resources.
+   * On cancel, do nothing.
+   */
   angular
     .module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s')
     .factory('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.delete.service', deleteService);
@@ -33,16 +41,9 @@
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.events'
   ];
 
-  /**
-   * @ngDoc factory
-   * @name horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.delete.service
-   * @Description
-   * Brings up the delete {{cookiecutter.panel}}s confirmation modal dialog.
-   * On submit, delete selected resources.
-   * On cancel, do nothing.
-   */
   function deleteService(
-    $location, $q, api, policy, actionResult, gettext, $qExtensions, deleteModal, toast, resourceType, events
+    $location, $q, api, policy, actionResult, gettext, $qExtensions,
+    deleteModal, toast, resourceType, events
   ) {
     var scope;
     var context = {
@@ -51,34 +52,38 @@
       successEvent: events.DELETE_SUCCESS
     };
     var service = {
-      initScope: initScope,
+      initAction: initAction,
       allowed: allowed,
       perform: perform
     };
-    var notAllowedMessage = gettext("You are not allowed to delete {{cookiecutter.panel}}s: %s");
+    var notAllowedMessage =
+      gettext("You are not allowed to delete {{cookiecutter.panel}}s: %s");
 
     return service;
 
     //////////////
 
-    // include this function in your service
-    // if you plan to emit events to the parent controller
-    function initScope($scope) {
-      scope = $scope;
+    // fixme: include this function in your service
+    // if you plan to emit events to the parent controller,
+    // otherwise remove it
+    function initAction() {
     }
 
     function allowed() {
       return $qExtensions.booleanAsPromise(true);
+      // fixme: if you need to set policy, change as follow
+      //return policy.ifAllowed({ rules: [['{{cookiecutter.panel}}', 'delete_{{cookiecutter.panel}}']] });
     }
 
     // delete selected resource objects
-    function perform(selected) {
-      var selected = angular.isArray(selected) ? selected : [selected];
+    function perform(selected, newScope) {
+      scope = newScope;
+      selected = angular.isArray(selected) ? selected : [selected];
       context.labels = labelize(selected.length);
       return $qExtensions.allSettled(selected.map(checkPermission)).then(afterCheck);
     }
 
-    function labelize(count){
+    function labelize(count) {
       return {
         title: ngettext('Confirm Delete {{cookiecutter.panel_func}}',
                         'Confirm Delete {{cookiecutter.panel_func}}s', count),
@@ -101,7 +106,7 @@
     }
 
     // for batch delete
-    function afterCheck(result){
+    function afterCheck(result) {
       var outcome = $q.reject();  // Reject the promise by default
       if (result.fail.length > 0) {
         toast.add('error', getMessage(notAllowedMessage, result.fail));
@@ -123,9 +128,9 @@
       deleteModalResult.fail.forEach(function markFailed(item) {
         result.failed(resourceType, getEntity(item).id);
       });
-      if(result.result.failed.length == 0 && result.result.deleted.length > 0){
+      if (result.result.failed.length === 0 && result.result.deleted.length > 0) {
         $location.path('/{{cookiecutter.dashboard}}/{{cookiecutter.panel}}s');
-      }else{
+      } else {
         return result.result;
       }
     }
@@ -144,7 +149,7 @@
     }
 
     // call delete REST API
-    function deleteEntity(id){
+    function deleteEntity(id) {
       return api.delete{{cookiecutter.panel_func}}(id, true);
     }
   }

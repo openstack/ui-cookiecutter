@@ -48,7 +48,7 @@
     };
 
     var service = {
-      initScope: initScope,
+      initAction: initAction,
       perform: perform,
       allowed: allowed
     };
@@ -59,10 +59,15 @@
 
     //////////////
 
-    function initScope() {
+    // fixme: include this function in your service
+    // if you plan to emit events to the parent controller,
+    // otherwise remove it
+    function initAction() {
     }
 
-    function perform(selected) {
+    // fixme: if newScope is unnecessary, remove it
+    /* eslint-disable no-unused-vars */
+    function perform(selected, newScope) {
       // modal title, buttons
       var title, submitText, submitIcon;
       title = gettext("Update {{cookiecutter.panel_func}}");
@@ -93,10 +98,11 @@
 
     function allowed() {
       return $qExtensions.booleanAsPromise(true);
-      //return policy.ifAllowed({ rules: [['{{cookiecutter.panel}}', 'add_{{cookiecutter.panel}}']] });
+      // fixme: if you need to set policy, change as follow
+      //return policy.ifAllowed({ rules: [['{{cookiecutter.panel}}', 'update_{{cookiecutter.panel}}']] });
     }
 
-    function submit(){
+    function submit() {
       model.cleanProperties();
       return api.update{{cookiecutter.panel_func}}(id, model.spec).then(success);
     }
@@ -106,9 +112,9 @@
       toast.add('success', interpolate(message.success, [response.data.id]));
       var result = actionResult.getActionResult()
                    .updated(resourceType, response.data.id);
-      if(result.result.failed.length == 0 && result.result.updated.length > 0){
+      if (result.result.failed.length === 0 && result.result.updated.length > 0) {
         $location.path('/{{cookiecutter.dashboard}}/{{cookiecutter.panel}}s');
-      }else{
+      } else {
         return result.result;
       }
     }
