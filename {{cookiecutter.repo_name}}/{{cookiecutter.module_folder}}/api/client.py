@@ -21,6 +21,7 @@ from openstack_dashboard.api import base
 
 # for stab, should remove when use CLI API
 import copy
+from datetime import datetime
 import uuid
 
 
@@ -78,6 +79,7 @@ def {{cookiecutter.panel}}_create(request, **kwargs):
 
     # create dummy response
     args["uuid"] = uuid.uuid1().hex
+    args["created_at"] = datetime.now().isoformat()
     created = StubResponse(args)
     for k in args:
         setattr(created, k, args[k])
@@ -98,6 +100,7 @@ def {{cookiecutter.panel}}_update(request, id, **kwargs):
 
     # update dummy response
     args["uuid"] = id
+    args["updated_at"] = datetime.now().isoformat()
     updated = StubResponse(args)
     for k in args:
         setattr(updated, k, args[k])
