@@ -1,21 +1,6 @@
-<div class="row">
-  <dl class="col-md-4">
-    <dt translate>ID</dt>
-    <dd>{$ item.id $}</dd>
-  </dl>
-</div>
-<div class="row rsp-alt-p2">
-  <dl class="col-md-4">
-    <dt translate>Topping</dt>
-    <dd>{$ item.topping | noValue $}</dd>
-  </dl>
-  <dl class="col-md-4">
-    <dt translate>Created</dt>
-    <dd>{$ item.created_at | date:'short' | noValue $}</dd>
-  </dl>
-  <dl class="col-md-4">
-    <dt translate>Updated</dt>
-    <dd>{$ item.updated_at | date:'short' | noValue $}</dd>
-  </dl>
-</div>
-
+<hz-resource-property-list
+  resource-type-name="OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}"
+  item="item"
+  property-groups="[['id'],
+                    ['topping', 'created_at', 'updated_at']]">
+</hz-resource-property-list>
