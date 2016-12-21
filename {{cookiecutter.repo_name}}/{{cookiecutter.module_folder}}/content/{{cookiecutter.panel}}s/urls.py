@@ -11,9 +11,9 @@
 #    under the License.
 
 from django.conf.urls import url
-from {{cookiecutter.module_folder}}.content.{{cookiecutter.panel}}s import views
-
+from horizon.browsers import views
 
 urlpatterns = [
-    url('', views.IndexView.as_view(), name='index'),
+    url('', views.AngularIndexView.as_view(), name='index'),
 ]
+
