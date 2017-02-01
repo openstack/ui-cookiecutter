@@ -11,11 +11,9 @@
 #    under the License.
 
 from django.conf.urls import url
-from django.utils.translation import ugettext_lazy as _
 from horizon.browsers import views
 
 urlpatterns = [
-    title = _("{{cookiecutter.panel_func}}s")
-    url('', views.AngularIndexView.as_view(title=title), name='index'),
+    url('', views.AngularIndexView.as_view(), name='index'),
 ]
 
