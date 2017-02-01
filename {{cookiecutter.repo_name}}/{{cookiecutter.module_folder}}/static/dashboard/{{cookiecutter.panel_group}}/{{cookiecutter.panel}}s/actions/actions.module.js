@@ -35,17 +35,17 @@
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.create.service',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.update.service',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.delete.service',
-    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType',
+    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType'
   ];
 
-  function register{{cookiecutter.panel_func}}Actions(
+  function register{{cookiecutter.panel_func}}Actions (
     registry,
     gettext,
     create{{cookiecutter.panel_func}}Service,
     update{{cookiecutter.panel_func}}Service,
     delete{{cookiecutter.panel_func}}Service,
-    resourceType)
-  {
+    resourceType
+  ) {
     var {{cookiecutter.panel}}sResourceType = registry.getResourceType(resourceType);
     {{cookiecutter.panel}}sResourceType.globalActions
       .append({
@@ -55,7 +55,7 @@
           type: 'create',
           text: gettext('Create {{cookiecutter.panel_func}}')
         }
-      })
+      });
 
     {{cookiecutter.panel}}sResourceType.batchActions
       .append({
@@ -72,7 +72,6 @@
         id: 'update{{cookiecutter.panel_func}}Action',
         service: update{{cookiecutter.panel_func}}Service,
         template: {
-          type: 'item',
           text: gettext('Update {{cookiecutter.panel_func}}')
         }
       })
