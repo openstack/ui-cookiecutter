@@ -40,8 +40,9 @@
 
     describe('urlFunction', function() {
       it("get url", inject(function() {
+        var detailRoute = $injector.get('horizon.app.core.detailRoute');
         var result = service.urlFunction({id:"123abc"});
-        expect(result).toBe("project/ngdetails/OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}/123abc");
+        expect(result).toBe(detailRoute + "OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}/123abc");
       }));
     });
 

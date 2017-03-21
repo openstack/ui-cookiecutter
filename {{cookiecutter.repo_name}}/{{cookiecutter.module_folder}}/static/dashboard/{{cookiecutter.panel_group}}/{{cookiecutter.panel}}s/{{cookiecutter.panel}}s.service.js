@@ -21,6 +21,7 @@
 
   service.$inject = [
     '$filter',
+    'horizon.app.core.detailRoute',
     'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}'
   ];
 
@@ -34,7 +35,7 @@
    * but do not need to be restricted to such use.  Each exposed function
    * is documented below.
    */
-  function service($filter, api) {
+  function service($filter, detailRoute, api) {
     return {
       getPromise: getPromise,
       urlFunction: urlFunction
@@ -55,7 +56,7 @@
     }
 
     function urlFunction(item) {
-      return 'project/ngdetails/OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}/' + item.id;
+      return detailRoute + 'OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}/' + item.id;
     }
   }
 })();
