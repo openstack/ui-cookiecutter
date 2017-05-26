@@ -19,7 +19,7 @@ PANEL_GROUP_NAME = _('{{cookiecutter.panel_group_name}}')
 # The slug of the dashboard the PANEL_GROUP associated with. Required.
 PANEL_GROUP_DASHBOARD = '{{cookiecutter.dashboard}}'
 
-ADD_INSTALLED_APPS = ['{{cookiecutter.module_folder}}']
+ADD_INSTALLED_APPS = ['{{cookiecutter.module_name}}']
 
 ADD_ANGULAR_MODULES = [
     'horizon.dashboard.{{cookiecutter.panel_group}}'

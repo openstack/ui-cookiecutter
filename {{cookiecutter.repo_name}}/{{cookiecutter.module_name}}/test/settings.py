@@ -19,14 +19,14 @@ from openstack_dashboard.test.settings import *  # noqa
 HORIZON_CONFIG.pop('dashboards', None)
 HORIZON_CONFIG.pop('default_dashboard', None)
 
-# Update the dashboards with {{cookiecutter.module_folder}}
-import {{cookiecutter.module_folder}}.enabled
+# Update the dashboards with {{cookiecutter.module_name}}
+import {{cookiecutter.module_name}}.enabled
 import openstack_dashboard.enabled
 from openstack_dashboard.utils import settings
 
 settings.update_dashboards(
     [
-        {{cookiecutter.module_folder}}.enabled,
+        {{cookiecutter.module_name}}.enabled,
         openstack_dashboard.enabled,
     ],
     HORIZON_CONFIG,

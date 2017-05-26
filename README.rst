@@ -29,13 +29,12 @@ Generate a Python package project::
 This command prompts interactive input. Please check these parameters::
 
 * "repo_group": The name for the git repo group. e.g. "openstack"
-* "repo_name": The name for the git repo. e.g. "cafe-ui",
+* "repo_name": The name for the git repo. e.g. "cafe-ui", This is used as python package name too.
 * "launchpad_project": The name of the project on launchpad. e.g. "cafe-ui",
 * "project_short_description": The short descriptions for your UI. e.g. "Cafe User Interface",
 * "help_name": The name for the help. e.g. "Cafe-UI",
 * "call_by_name": The name of this UI to write texts such as README or Help. e.g. "Cafe UI",
-* "module_name": The name of the python module. e.g. "cafe-ui"
-* "module_folder": The name for the module folder. e.g. "cafe_ui",
+* "module_name": The name of the python module. e.g. "cafe_ui"
 * "dashboard": The slug of the "dashboard" you want to add this plugin into. e.g. "project",
 * "panel_group": The slug for the "panel_group". e.g. "cafe",
 * "panel_group_name": The caption for the "panel_group". e.g. "Cafe",
@@ -52,8 +51,8 @@ Run with OpenStack Horizon::
 
     cd <repo_name>
     pip install
-    cp <repo_name>/<module_folder>/enabled/_90_project_<panel_group>_panelgroup.py <horizon-dir>/openstack_dashboard/local/enabled
-    cp <repo_name>/<module_folder>/enabled/_91_project_<panel_group>_<panel>s.py <horizon-dir>/openstack_dashboard/local/enabled
+    cp <repo_name>/<module_name>/enabled/_90_project_<panel_group>_panelgroup.py <horizon-dir>/openstack_dashboard/local/enabled
+    cp <repo_name>/<module_name>/enabled/_91_project_<panel_group>_<panel>s.py <horizon-dir>/openstack_dashboard/local/enabled
 
 then reboot the Horizon.
 

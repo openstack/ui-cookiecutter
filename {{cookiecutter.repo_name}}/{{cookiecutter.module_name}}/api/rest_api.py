@@ -12,7 +12,7 @@
 
 from django.views import generic
 
-from {{cookiecutter.module_folder}}.api import client
+from {{cookiecutter.module_name}}.api import client
 
 from openstack_dashboard.api.rest import urls
 from openstack_dashboard.api.rest import utils as rest_utils

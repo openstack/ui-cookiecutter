@@ -18,4 +18,4 @@ PANEL_GROUP = '{{cookiecutter.panel_group}}'
 PANEL_DASHBOARD = '{{cookiecutter.dashboard}}'
 
 # Python panel class of the PANEL to be added.
-ADD_PANEL = '{{cookiecutter.module_folder}}.content.{{cookiecutter.panel}}s.panel.{{cookiecutter.panel_func}}s'
+ADD_PANEL = '{{cookiecutter.module_name}}.content.{{cookiecutter.panel}}s.panel.{{cookiecutter.panel_func}}s'

@@ -15,7 +15,7 @@ import horizon
 
 # This panel will be loaded from horizon, because specified in enabled file.
 # To register REST api, import below here.
-from {{cookiecutter.module_folder}}.api import rest_api  # noqa
+from {{cookiecutter.module_name}}.api import rest_api  # noqa
 
 
 class {{cookiecutter.panel_func}}s(horizon.Panel):

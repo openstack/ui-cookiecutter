@@ -35,9 +35,9 @@ sys.path.insert(0, ROOT)
 
 # This is required for ReadTheDocs.org, but isn't a bad idea anyway.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                      '{{ cookiecutter.module_folder }}.test.settings')
+                      '{{ cookiecutter.module_name }}.test.settings')
 
-from {{ cookiecutter.module_folder }} \
+from {{ cookiecutter.module_name }} \
     import version as ui_ver
 
 
@@ -67,7 +67,7 @@ def write_autodoc_index():
         return modlist
 
     RSTDIR = os.path.abspath(os.path.join(BASE_DIR, "sourcecode"))
-    SRCS = [('{{ cookiecutter.module_folder }}', ROOT), ]
+    SRCS = [('{{ cookiecutter.module_name }}', ROOT), ]
 
     EXCLUDED_MODULES = ()
     CURRENT_SOURCES = {}

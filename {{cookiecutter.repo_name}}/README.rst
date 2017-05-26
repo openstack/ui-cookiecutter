@@ -53,8 +53,8 @@ Install {{ cookiecutter.call_by_name }} with all dependencies in your virtual en
 
 And enable it in Horizon::
 
-    ln -s ../{{ cookiecutter.repo_name }}/{{ cookiecutter.module_folder }}/enabled/_90_project_{{ cookiecutter.panel_group }}_panelgroup.py openstack_dashboard/local/enabled
-    ln -s ../{{ cookiecutter.repo_name }}/{{ cookiecutter.module_folder }}/enabled/_91_project_{{ cookiecutter.panel_group }}_{{ cookiecutter.panel }}s_panel.py openstack_dashboard/local/enabled
+    ln -s ../{{ cookiecutter.repo_name }}/{{ cookiecutter.module_name }}/enabled/_90_project_{{ cookiecutter.panel_group }}_panelgroup.py openstack_dashboard/local/enabled
+    ln -s ../{{ cookiecutter.repo_name }}/{{ cookiecutter.module_name }}/enabled/_91_project_{{ cookiecutter.panel_group }}_{{ cookiecutter.panel }}s_panel.py openstack_dashboard/local/enabled
 
 To run horizon with the newly enabled {{ cookiecutter.call_by_name }} plugin run::
 
