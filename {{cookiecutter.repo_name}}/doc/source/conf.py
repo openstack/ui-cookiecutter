@@ -28,6 +28,8 @@ import os
 import subprocess
 import sys
 
+import django
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", ".."))
 
@@ -37,8 +39,12 @@ sys.path.insert(0, ROOT)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                       '{{ cookiecutter.module_name }}.test.settings')
 
-from {{ cookiecutter.module_name }} \
-    import version as ui_ver
+# Starting in Django 1.7, standalone scripts, such as a sphinx build
+# require that django.setup() be called first.
+# https://docs.djangoproject.com/en/1.8/releases/1.7/#standalone-scripts
+django.setup()
+
+from {{ cookiecutter.module_name }} import version as ui_ver
 
 
 def write_autodoc_index():
