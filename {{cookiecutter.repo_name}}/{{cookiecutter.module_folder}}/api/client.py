@@ -12,8 +12,10 @@
 
 
 from __future__ import absolute_import
+
 import logging
-#from {{cookiecutter.api_module}}client.v1 import client as {{cookiecutter.api_module}}_client
+
+from {{cookiecutter.api_module}}client.v1 import client as {{cookiecutter.api_module}}_client
 
 from horizon import exceptions
 from horizon.utils.memoized import memoized
@@ -28,9 +30,10 @@ import uuid
 LOG = logging.getLogger(__name__)
 
 ATTRIBUTES = ['name', 'description', 'enabled', 'size', 'temperature',
-                'base', 'flavor', 'topping']
+              'base', 'flavor', 'topping']
 
 STUB_DATA = {}
+
 
 # for stab, should be removed when use CLI API
 class StubResponse(object):
@@ -50,7 +53,7 @@ class StubResponse(object):
 @memoized
 def apiclient(request):
     api_url = ""
-    """"
+
     try:
         api_url = base.url_for(request, '{{cookiecutter.panel}}')
     except exceptions.ServiceCatalogException:
@@ -59,12 +62,12 @@ def apiclient(request):
 
     LOG.debug('{{cookiecutter.api_module}}client connection created using the token "%s" and url'
               '"%s"' % (request.user.token.id, api_url))
-    c = {{cookiecutter.api_module}}_client.Client(username=request.user.username,
-                         project_id=request.user.tenant_id,
-                         input_auth_token=request.user.token.id,
-                         api_url=api_url)
+    c = {{cookiecutter.api_module}}_client.Client(
+        username=request.user.username,
+        project_id=request.user.tenant_id,
+        input_auth_token=request.user.token.id,
+        api_url=api_url)
     return c
-    """
 
 
 def {{cookiecutter.panel}}_create(request, **kwargs):
@@ -75,7 +78,7 @@ def {{cookiecutter.panel}}_create(request, **kwargs):
         else:
             raise exceptions.BadRequest(
                 "Key must be in %s" % ",".join(ATTRIBUTES))
-    #created = apiclient(request).{{cookiecutter.panel}}s.create(**args)
+    # created = apiclient(request).{{cookiecutter.panel}}s.create(**args)
 
     # create dummy response
     args["uuid"] = uuid.uuid1().hex
@@ -96,7 +99,7 @@ def {{cookiecutter.panel}}_update(request, id, **kwargs):
         else:
             raise exceptions.BadRequest(
                 "Key must be in %s" % ",".join(ATTRIBUTES))
-    #updated = apiclient(request).{{cookiecutter.panel}}.update(id, **args)
+    # updated = apiclient(request).{{cookiecutter.panel}}.update(id, **args)
 
     # update dummy response
     args["uuid"] = id
@@ -110,21 +113,23 @@ def {{cookiecutter.panel}}_update(request, id, **kwargs):
 
 
 def {{cookiecutter.panel}}_delete(request, id):
-    #deleted = apiclient(request).{{cookiecutter.panel}}s.delete(id)
+    # deleted = apiclient(request).{{cookiecutter.panel}}s.delete(id)
     deleted = STUB_DATA.pop(id)
 
     return deleted
 
 
-def {{cookiecutter.panel}}_list(request, limit=None, marker=None, sort_key=None,
-                  sort_dir=None, detail=True):
-    #list = apiclient(request).{{cookiecutter.panel_func}}s.list(limit, marker, sort_key,
-    #                                            sort_dir, detail)
+def {{cookiecutter.panel}}_list(
+        request, limit=None, marker=None, sort_key=None,
+        sort_dir=None, detail=True):
+
+    # list = apiclient(request).{{cookiecutter.panel_func}}s.list(limit, marker, sort_key,
+    #                                             sort_dir, detail)
     list = [STUB_DATA[data] for data in STUB_DATA]
     return list
 
 
 def {{cookiecutter.panel}}_show(request, id):
-    #show = apiclient(request).{{cookiecutter.panel}}s.get(id)
+    # show = apiclient(request).{{cookiecutter.panel}}s.get(id)
     show = STUB_DATA.get(id)
     return show

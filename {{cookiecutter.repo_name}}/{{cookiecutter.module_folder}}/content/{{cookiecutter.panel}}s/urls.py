@@ -18,4 +18,3 @@ title = _("{{cookiecutter.panel_func}}s")
 urlpatterns = [
     url('', views.AngularIndexView.as_view(title=title), name='index'),
 ]
-

@@ -17,6 +17,7 @@ import horizon
 # To register REST api, import below here.
 from {{cookiecutter.module_folder}}.api import rest_api  # noqa
 
+
 class {{cookiecutter.panel_func}}s(horizon.Panel):
     name = _("{{cookiecutter.panel_func}}s")
     slug = "{{cookiecutter.panel}}s"

@@ -209,8 +209,11 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', '{{cookiecutter.help_name }}ReleaseNotes.tex', u'{{cookiecutter.call_by_name }} Release Notes Documentation',
-     u'{{cookiecutter.call_by_name }} Developers', 'manual'),
+    ('index',
+     '{{cookiecutter.help_name }}ReleaseNotes.tex',
+     u'{{cookiecutter.call_by_name }} Release Notes Documentation',
+     u'{{cookiecutter.call_by_name }} Developers',
+     'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
