@@ -4,6 +4,6 @@ exclude .gitignore
 exclude .gitreview
 include setup.py
 
-recursive-include ironic_ui *.js *.html *.scss
+recursive-include {{cookiecutter.module_name}} *.js *.html *.scss
 
 global-exclude *.pyc
