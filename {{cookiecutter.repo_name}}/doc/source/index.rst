@@ -13,19 +13,21 @@ Features
 
 * TODO
 
-Using {{ cookiecutter.call_by_name }}
--------------------------------------
+User Documentation
+------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   install
+   install/index
+   configuration/index
+   Release Notes <https://docs.openstack.org/releasenotes/{{ cookiecutter.repo_name }}>
 
-Source Code Reference
----------------------
+Contributor Guide
+-----------------
 
 .. toctree::
    :glob:
-   :maxdepth: 1
+   :maxdepth: 2
 
-   sourcecode/autoindex
+   contributor/index
