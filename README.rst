@@ -71,13 +71,13 @@ Then::
 * Add the project to the OpenStack Infrastructure
 
 
-.. _pbr: http://docs.openstack.org/developer/pbr
+.. _pbr: https://docs.openstack.org/pbr/latest/
 .. _hacking: https://git.openstack.org/cgit/openstack-dev/hacking/plain/HACKING.rst
 .. _eslint: http://eslint.org/
-.. _OpenStack-Infra: http://docs.openstack.org/infra/system-config
+.. _OpenStack-Infra: https://docs.openstack.org/infra/system-config
 .. _testrepository: https://testrepository.readthedocs.org/
 .. _Tox: http://testrun.org/tox/
 .. _karma: https://github.com/karma-runner/karma
 .. _Sphinx: http://sphinx-doc.org/
-.. _reno: http://docs.openstack.org/developer/reno/
+.. _reno: https://docs.openstack.org/reno/latest/
 
