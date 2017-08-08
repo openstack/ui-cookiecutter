@@ -15,7 +15,8 @@ from __future__ import absolute_import
 
 import logging
 
-from {{cookiecutter.api_module}}client.v1 import client as {{cookiecutter.api_module}}_client
+# enable following after client product implemented.
+# from {{cookiecutter.api_module}}client.v1 import client as {{cookiecutter.api_module}}_client
 
 from horizon import exceptions
 from horizon.utils.memoized import memoized
@@ -53,6 +54,7 @@ class StubResponse(object):
 @memoized
 def apiclient(request):
     api_url = ""
+    c = None
 
     try:
         api_url = base.url_for(request, '{{cookiecutter.panel}}')
@@ -62,11 +64,12 @@ def apiclient(request):
 
     LOG.debug('{{cookiecutter.api_module}}client connection created using the token "%s" and url'
               '"%s"' % (request.user.token.id, api_url))
-    c = {{cookiecutter.api_module}}_client.Client(
-        username=request.user.username,
-        project_id=request.user.tenant_id,
-        input_auth_token=request.user.token.id,
-        api_url=api_url)
+    # enable following after client product implemented.
+    # c = {{cookiecutter.api_module}}_client.Client(
+    #     username=request.user.username,
+    #     project_id=request.user.tenant_id,
+    #     input_auth_token=request.user.token.id,
+    #     api_url=api_url)
     return c
 
 
