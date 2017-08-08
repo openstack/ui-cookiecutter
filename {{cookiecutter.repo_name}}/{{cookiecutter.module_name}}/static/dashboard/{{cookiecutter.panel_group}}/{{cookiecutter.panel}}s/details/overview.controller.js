@@ -19,17 +19,11 @@
     .controller('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.OverviewController', controller);
 
   controller.$inject = [
-    '$scope',
-    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType',
-    'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.events',
-    'horizon.framework.conf.resource-type-registry.service'
+    '$scope'
   ];
 
   function controller(
-    $scope,
-    resourceType,
-    events,
-    registry
+    $scope
   ) {
     var ctrl = this;
     ctrl.{{cookiecutter.panel}} = {};
