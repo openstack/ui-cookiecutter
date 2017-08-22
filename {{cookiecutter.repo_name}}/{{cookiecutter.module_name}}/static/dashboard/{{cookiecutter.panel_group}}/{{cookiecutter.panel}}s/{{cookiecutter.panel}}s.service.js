@@ -52,7 +52,7 @@
         var timestamp = item.updated_at ? item.updated_at : item.created_at;
         item.trackBy = item.id.concat(timestamp);
         return item;
-      };
+      }
     }
 
     function urlFunction(item) {

@@ -30,14 +30,13 @@
       get{{cookiecutter.panel_func}}s: get{{cookiecutter.panel_func}}s,
       create{{cookiecutter.panel_func}}: create{{cookiecutter.panel_func}},
       update{{cookiecutter.panel_func}}: update{{cookiecutter.panel_func}},
-      delete{{cookiecutter.panel_func}}: delete{{cookiecutter.panel_func}},
+      delete{{cookiecutter.panel_func}}: delete{{cookiecutter.panel_func}}
     };
 
     return service;
 
-    ///////////////
-    // {{cookiecutter.panel_func}}s //
-    ///////////////
+    ///////////////////////////////
+    // {{cookiecutter.panel_func}}s
 
     function get{{cookiecutter.panel_func}}(id) {
       return apiService.get('/api/{{cookiecutter.api_module}}/{{cookiecutter.panel}}s/' + id)

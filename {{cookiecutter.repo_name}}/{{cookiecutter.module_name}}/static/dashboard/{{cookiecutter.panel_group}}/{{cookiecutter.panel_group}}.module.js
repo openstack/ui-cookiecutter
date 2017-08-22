@@ -21,12 +21,14 @@
    * @description
    * Dashboard module to host various {{cookiecutter.panel_group}} panels.
    */
+  // fixme: if ngRoute and $routeProvider are unnecessary, remove them
+  /* eslint-disable no-unused-vars */
   angular
     .module('horizon.dashboard.{{cookiecutter.panel_group}}', [
       'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s',
       'ngRoute'
     ])
-    .config(config)
+    .config(config);
 
   config.$inject = ['$provide', '$windowProvider', '$routeProvider'];
 
@@ -34,4 +36,5 @@
     var path = $windowProvider.$get().STATIC_URL + 'dashboard/{{cookiecutter.panel_group}}/';
     $provide.constant('horizon.dashboard.{{cookiecutter.panel_group}}.basePath', path);
   }
+  /* eslint-disable no-unused-vars */
 })();

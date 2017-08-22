@@ -38,6 +38,7 @@
    * @ngdoc constant
    * @name horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.events
    * @description A list of events used by {{cookiecutter.panel_func}}
+   * @returns {Object} events
    */
   function events() {
     return {
@@ -56,11 +57,13 @@
   function run(registry, service, basePath, resourceType) {
     registry.getResourceType(resourceType)
     .setNames(gettext('{{cookiecutter.panel_func}}'), gettext('{{cookiecutter.panel_func}}s'))
-    // for detail summary view on table row 
+    // for detail summary view on table row
     .setSummaryTemplateUrl(basePath + 'details/drawer.html')
-    // for table row items and detail summary view.
+    // specify items for table row items, summary view and details view
     .setProperties(properties())
+    // get items for table
     .setListFunction(service.getPromise)
+    // specify table columns
     .tableColumns
     .append({
       id: 'name',
