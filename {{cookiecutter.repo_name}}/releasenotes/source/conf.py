@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -56,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'{{cookiecutter.call_by_name }} Release Notes'
-copyright = u'2016, OpenStack Foundation'
+copyright = u'2017, OpenStack Foundation'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -115,7 +114,7 @@ pygments_style = 'sphinx'
 html_theme = 'openstackdocs'
 
 # openstackdocstheme options
-repository_name = '{{cookiecutter.repo_group}}/{cookiecutter.repo_name}}'
+repository_name = '{{cookiecutter.repo_group}}/{{cookiecutter.repo_name}}'
 bug_project = '{{cookiecutter.launchpad_project}}'
 bug_tag = ''
 

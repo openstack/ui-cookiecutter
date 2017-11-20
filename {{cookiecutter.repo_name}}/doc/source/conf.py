@@ -187,7 +187,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'{{ cookiecutter.call_by_name }}'
-copyright = u'2016, OpenStack Foundation'
+copyright = u'2017, OpenStack Foundation'
 
 # Release notes are version independent.
 # The full version, including alpha/beta/rc tags.
@@ -241,7 +241,7 @@ nitpicky = False
 html_theme = 'openstackdocs'
 
 # openstackdocstheme options
-repository_name = '{{cookiecutter.repo_group}}/{cookiecutter.repo_name}}'
+repository_name = '{{cookiecutter.repo_group}}/{{cookiecutter.repo_name}}'
 bug_project = '{{cookiecutter.launchpad_project}}'
 bug_tag = ''
 
@@ -315,7 +315,7 @@ html_last_updated_fmt = '%Y-%m-%d %H:%M'
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Horizondoc'
+htmlhelp_basename = '{{ cookiecutter.help_name }}doc'
 
 
 # -- Options for LaTeX output -------------------------------------------------
@@ -335,7 +335,8 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
-    ('index', 'Horizon.tex', u'Horizon Documentation',
+    ('index', '{{ cookiecutter.help_name }}.tex',
+     u'{{ cookiecutter.call_by_name }} Documentation',
      u'OpenStack Foundation', 'manual'),
 ]
 
@@ -381,8 +382,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'Horizon', u'Horizon Documentation', u'OpenStack',
-     'Horizon', 'One line description of project.', 'Miscellaneous'),
+    ('index', '{{ cookiecutter.call_by_name }}',
+     u'{{ cookiecutter.call_by_name }} Documentation', u'OpenStack',
+     '{{ cookiecutter.call_by_name }}',
+     '{{ cookiecutter.project_short_description }}', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.
@@ -398,10 +401,10 @@ texinfo_documents = [
 # -- Options for Epub output --------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Horizon'
+epub_title = u'{{ cookiecutter.call_by_name }}'
 epub_author = u'OpenStack'
 epub_publisher = u'OpenStack'
-epub_copyright = u'2012, OpenStack'
+epub_copyright = u'2017, OpenStack'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
