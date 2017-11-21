@@ -1,0 +1,16 @@
+- job:
+    name: ui-cookiecutter-tox-checkbuild
+    parent: tox
+    pre-run: playbooks/checkbuild/pre.yaml
+    post-run: playbooks/checkbuild/post.yaml
+    vars:
+      tox_envlist: checkbuild
+
+- project:
+    name: openstack/ui-cookiecutter
+    check:
+      jobs:
+        - ui-cookiecutter-tox-checkbuild
+    gate:
+      jobs:
+        - ui-cookiecutter-tox-checkbuild
