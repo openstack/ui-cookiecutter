@@ -45,7 +45,7 @@ This command prompts interactive input. Please check these parameters::
 
 If you want to generate without interactive input, you can use example values for these parameters as follow::
 
-   cookiecutter https://github.com/openstack/ui-cookiecutter.git --no-inputs
+   cookiecutter https://github.com/openstack/ui-cookiecutter.git --no-input
 
 Run with OpenStack Horizon::
 
