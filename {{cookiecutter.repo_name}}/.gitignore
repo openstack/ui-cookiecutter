@@ -8,6 +8,7 @@ npm-debug.log
 releasenotes/build
 {{ cookiecutter.module_name }}/test/.secret_key_store
 .coverage*
+.idea
 .jshintrc
 .project
 .pydevproject
