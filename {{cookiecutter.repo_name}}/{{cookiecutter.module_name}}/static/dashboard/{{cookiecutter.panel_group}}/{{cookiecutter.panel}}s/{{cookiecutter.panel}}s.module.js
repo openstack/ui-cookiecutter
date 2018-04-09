@@ -59,6 +59,10 @@
     .setNames(gettext('{{cookiecutter.panel_func}}'), gettext('{{cookiecutter.panel_func}}s'))
     // for detail summary view on table row
     .setSummaryTemplateUrl(basePath + 'details/drawer.html')
+    // set default url for index view. this will be used for reproducing
+    // sidebar and breadcrumb when refreshing or accessing directly
+    // details view.
+    .setDefaultIndexUrl('/{{cookiecutter.dashboard}}/{{cookiecutter.panel}}s/')
     // specify items for table row items, summary view and details view
     .setProperties(properties())
     // get items for table
