@@ -1,0 +1,12 @@
+- hosts: all
+  roles:
+    - role: fetch-tox-output
+      tox_envlist: checkbuild
+      zuul_work_dir: "{{ zuul.project.src_dir }}"
+
+- hosts: all
+  roles:
+    - role: fetch-tox-output
+      tox_envlist: pep8,py27-local,py35-local,py35dj20-local,eslint,karma,karma-local,docs-local,releasenotes
+      zuul_work_dir: "{{ zuul.project.src_dir }}/.tox/checkbuild/cafe-ui"
+
