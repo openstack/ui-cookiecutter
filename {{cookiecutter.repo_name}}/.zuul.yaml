@@ -1,0 +1,31 @@
+- project:
+    check:
+      jobs:
+        - horizon-openstack-tox-py35dj20:
+            required-projects:
+              openstack/horizon
+        - nodejs-npm-run-lint:
+            vars:
+              node_version: 4
+            required-projects:
+              openstack/horizon
+        - nodejs-npm-run-test:
+            vars:
+              node_version: 4
+            required-projects:
+              openstack/horizon
+    gate:
+      jobs:
+        - horizon-openstack-tox-py35dj20:
+            required-projects:
+              openstack/horizon
+        - nodejs-npm-run-lint:
+            vars:
+              node_version: 4
+            required-projects:
+              openstack/horizon
+        - nodejs-npm-run-test:
+            vars:
+              node_version: 4
+            required-projects:
+              openstack/horizon

@@ -16,6 +16,7 @@
 
   describe('{{cookiecutter.panel_func}}s service', function() {
     var service;
+    beforeEach(module('horizon.app.core.openstack-service-api'));
     beforeEach(module('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s'));
     beforeEach(inject(function($injector) {
       service = $injector.get('horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.service');
@@ -29,7 +30,7 @@
         var result = service.getPromise({});
         deferred.resolve({
           data:{
-            items: [{id: 123, name: 'resource1'}]
+            items: [{id: '123abc', name: 'resource1'}]
           }
         });
         $timeout.flush();
@@ -39,7 +40,7 @@
     });
 
     describe('urlFunction', function() {
-      it("get url", inject(function() {
+      it("get url", inject(function($injector) {
         var detailRoute = $injector.get('horizon.app.core.detailRoute');
         var result = service.urlFunction({id:"123abc"});
         expect(result).toBe(detailRoute + "OS::{{cookiecutter.api_name}}::{{cookiecutter.panel_func}}/123abc");
