@@ -30,20 +30,22 @@
   deleteService.$inject = [
     '$location',
     '$q',
+    '$rootScope',
     'horizon.app.core.openstack-service-api.{{cookiecutter.api_module}}',
     'horizon.app.core.openstack-service-api.policy',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.framework.util.q.extensions',
     'horizon.framework.widgets.modal.deleteModalService',
+    'horizon.framework.widgets.table.events',
     'horizon.framework.widgets.toast.service',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.resourceType',
     'horizon.dashboard.{{cookiecutter.panel_group}}.{{cookiecutter.panel}}s.events'
   ];
 
   function deleteService(
-    $location, $q, api, policy, actionResult, gettext, $qExtensions,
-    deleteModal, toast, resourceType, events
+    $location, $q, $rootScope, api, policy, actionResult, gettext, $qExtensions,
+    deleteModal, tableEvents, toast, resourceType, events
   ) {
     var scope;
     var context = {
@@ -131,6 +133,7 @@
       if (result.result.failed.length === 0 && result.result.deleted.length > 0) {
         $location.path('/{{cookiecutter.dashboard}}/{{cookiecutter.panel}}s');
       } else {
+        $rootScope.$broadcast(tableEvents.CLEAR_SELECTIONS);
         return result.result;
       }
     }
