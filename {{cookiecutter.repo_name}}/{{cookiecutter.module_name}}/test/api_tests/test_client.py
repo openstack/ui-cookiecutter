@@ -15,9 +15,6 @@ from openstack_dashboard.test import helpers as test
 
 class {{cookiecutter.panel_func}}sClientTestCase(test.TestCase):
 
-    # NOTE(shu-mutow): following should be removed after end of Rocky.
-    use_mox = False
-
     # Unit tests for Client API.
     def test_me(self):
         self.assertTrue(1 + 1 == 2)
