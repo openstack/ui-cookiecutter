@@ -7,7 +7,6 @@
       tox_envlist: checkbuild
 
 - project:
-    name: openstack/ui-cookiecutter
     check:
       jobs:
         - ui-cookiecutter-tox-checkbuild
