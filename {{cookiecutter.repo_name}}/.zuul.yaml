@@ -1,29 +1,11 @@
 - project:
+    templates:
+      - horizon-nodejs4-jobs
     check:
       jobs:
         - openstack-tox-py36:
             voting: false
         - horizon-openstack-tox-python3-django111
-        - nodejs-npm-run-lint:
-            vars:
-              node_version: 4
-            required-projects:
-              openstack/horizon
-        - nodejs-npm-run-test:
-            vars:
-              node_version: 4
-            required-projects:
-              openstack/horizon
     gate:
       jobs:
         - horizon-openstack-tox-python3-django111
-        - nodejs-npm-run-lint:
-            vars:
-              node_version: 4
-            required-projects:
-              openstack/horizon
-        - nodejs-npm-run-test:
-            vars:
-              node_version: 4
-            required-projects:
-              openstack/horizon
