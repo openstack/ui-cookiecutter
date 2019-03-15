@@ -5,6 +5,7 @@
     post-run: playbooks/checkbuild/post.yaml
     vars:
       tox_envlist: checkbuild
+    nodeset: ubuntu-xenial
 
 - project:
     check:
