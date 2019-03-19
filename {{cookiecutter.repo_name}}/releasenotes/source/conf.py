@@ -11,9 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Glance Release Notes documentation build configuration file, created by
-# sphinx-quickstart on Tue Nov  3 17:40:50 2015.
-#
+from {{cookiecutter.module_name}} import version as ui_ver
+
 # This file is execfile()d with the current directory set to its
 # containing dir.
 #
@@ -61,7 +60,6 @@ copyright = u'2017, OpenStack Foundation'
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
-from {{cookiecutter.module_name}} import version as ui_ver
 # The short X.Y version.
 # The full version, including alpha/beta/rc tags.
 release = ui_ver.version_info.release_string()
