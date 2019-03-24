@@ -3,7 +3,7 @@
   "description": "{{ cookiecutter.call_by_name }} JavaScript tests",
   "repository": {
     "type": "git",
-    "url": "git://git.openstack.org/openstack/{{ cookiecutter.repo_name }}"
+    "url": "https://git.openstack.org/openstack/{{ cookiecutter.repo_name }}"
   },
   "version": "0.0.0",
   "private": true,
