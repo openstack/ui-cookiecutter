@@ -72,7 +72,7 @@ Then::
 
 
 .. _pbr: https://docs.openstack.org/pbr/latest/
-.. _hacking: https://git.openstack.org/cgit/openstack-dev/hacking/plain/HACKING.rst
+.. _hacking: https://opendev.org/openstack/hacking/raw/branch/master/HACKING.rst
 .. _eslint: http://eslint.org/
 .. _OpenStack-Infra: https://docs.openstack.org/infra/system-config
 .. _testrepository: https://testrepository.readthedocs.org/
