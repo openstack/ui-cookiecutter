@@ -26,7 +26,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "postinstall": "if [ ! -d .tox ] || [ ! -d .tox/karma ]; then tox -ekarma --notest; python3 -m pip install -U -t ./.tox/karma/lib/`python3 -V|tr -d ' '|tr 'P' 'p'|cut -c -9`/site-packages/ -chttps://opendev.org/openstack/requirements/raw/branch/master/upper-constraints.txt ../horizon; fi",
+    "postinstall": "if [ ! -d .tox ] || [ ! -d .tox/karma ]; then tox -ekarma --notest; python3 -m pip install -U -t ./.tox/karma/lib/`python3 -V|tr -d ' '|tr 'P' 'p'|cut -c -9`/site-packages/ -chttps://releases.openstack.org/constraints/upper/master ../horizon; fi",
     "lint": "eslint --no-color {{ cookiecutter.module_name }}/static",
     "lintq": "eslint --quiet {{ cookiecutter.module_name }}/static",
     "test": "karma start {{ cookiecutter.module_name }}/karma.conf.js --single-run"
