@@ -1,11 +1,4 @@
 - project:
     templates:
       - horizon-nodejs10-jobs
-    check:
-      jobs:
-        - openstack-tox-py36:
-            voting: false
-        - horizon-openstack-tox-python3-django111
-    gate:
-      jobs:
-        - horizon-openstack-tox-python3-django111
+      - horizon-non-primary-django-jobs
