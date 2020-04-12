@@ -1,6 +1,6 @@
 - hosts: all
   roles:
-    - install-nodejs
-    - install-yarn
-    - install-javascript-packages
+    - ensure-nodejs
+    - ensure-yarn
+    - ensure-javascript-packages
     - nodejs-test-dependencies
