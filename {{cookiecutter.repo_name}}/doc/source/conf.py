@@ -22,8 +22,6 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-from __future__ import print_function
-
 import os
 import sys
 
@@ -115,7 +113,7 @@ exclude_patterns = ['**/#*', '**~', '**/#*#']
 show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'native'
 
 # A list of ignored prefixes for module index sorting.
 # modindex_common_prefix = []
@@ -137,9 +135,9 @@ apidoc_excluded_paths = [
 html_theme = 'openstackdocs'
 
 # openstackdocstheme options
-repository_name = '{{cookiecutter.repo_group}}/{{cookiecutter.repo_name}}'
-bug_project = '{{cookiecutter.launchpad_project}}'
-bug_tag = ''
+openstackdocs_repo_name = '{{cookiecutter.repo_group}}/{{cookiecutter.repo_name}}'
+openstackdocs_bug_project = '{{cookiecutter.launchpad_project}}'
+openstackdocs_bug_tag = ''
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -169,9 +167,6 @@ bug_tag = ''
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 # html_static_path = ['_static']
-
-# Must set this variable to include year, month, day, hours, and minutes.
-html_last_updated_fmt = '%Y-%m-%d %H:%M'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
