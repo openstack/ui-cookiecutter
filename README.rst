@@ -22,11 +22,12 @@ See also https://github.com/audreyr/cookiecutter.
 Usage
 -----
 
+First, go to horizon directory::
 
+    cd <horizon-dir>
 
 Generate a Python package project::
 
-    cd <horizon-dir>
     cookiecutter https://github.com/openstack/ui-cookiecutter.git
 
 This command prompts interactive input. Please check these parameters::
