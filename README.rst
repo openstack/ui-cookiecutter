@@ -22,8 +22,11 @@ See also https://github.com/audreyr/cookiecutter.
 Usage
 -----
 
+
+
 Generate a Python package project::
 
+    cd <horizon-dir>
     cookiecutter https://github.com/openstack/ui-cookiecutter.git
 
 This command prompts interactive input. Please check these parameters::
@@ -50,9 +53,10 @@ If you want to generate without interactive input, you can use example values fo
 Run with OpenStack Horizon::
 
     cd <repo_name>
-    pip install
+    pip install .
     cp <repo_name>/<module_name>/enabled/_90_project_<panel_group>_panelgroup.py <horizon-dir>/openstack_dashboard/local/enabled
     cp <repo_name>/<module_name>/enabled/_91_project_<panel_group>_<panel>s.py <horizon-dir>/openstack_dashboard/local/enabled
+    mv <module_name> ..
 
 then reboot the Horizon.
 
