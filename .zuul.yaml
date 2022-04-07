@@ -5,6 +5,12 @@
     post-run: playbooks/checkbuild/post.yaml
     vars:
       tox_envlist: checkbuild
+      ensure_global_symlinks: true
+      # node_version should match the default nodejs version
+      # used in horizon nodejs jobs.
+      node_version: 14
+      # It should match the python version in tox.ini in the template
+      python_version: 3.9
 - project:
     check:
       jobs:
