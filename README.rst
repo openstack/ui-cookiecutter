@@ -53,7 +53,7 @@ Run with OpenStack Horizon::
     pip install
     cp <repo_name>/<module_name>/enabled/_90_project_<panel_group>_panelgroup.py <horizon-dir>/openstack_dashboard/local/enabled
     cp <repo_name>/<module_name>/enabled/_91_project_<panel_group>_<panel>s.py <horizon-dir>/openstack_dashboard/local/enabled
-
+    mv <repo_name> ../
 then reboot the Horizon.
 
 OpenStack projects require a working git repo for pbr to work, on newer
